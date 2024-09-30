@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Creaciones Phil</title>
+    <style>
+        body {
+            /* Eliminado el fondo animado GIF */
+            background: #d8d4d3; /* Puedes ajustar el color de fondo según sea necesario */
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            z-index: 1000;
+        }
+
+        .navbar a, .dropbtn {
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+            position: relative;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .navbar a:hover, .dropbtn:hover {
+            color: #ddd;
+        }
+
+        .spark {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background-color: red;
+            border-radius: 50%;
+            animation: spark-animation 1s linear forwards;
+            pointer-events: none;
+        }
+
+        @keyframes spark-animation {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--x), var(--y)) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.7);
+            min-width: 120px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+
+        .dropdown-content a {
+            color: #f2f2f2;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #555;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .content {
+            width: 100%;
+            max-width: 1200px; /* Ajusta el ancho máximo según sea necesario */
+            margin: 80px auto; /* Centra el contenido y deja espacio arriba */
+            padding: 20px; /* Espacio interno para el contenido */
+            box-sizing: border-box; /* Incluye el padding en el cálculo del ancho */
+        }
+
+        .responsive-image {
+            width: 100%;
+            height: auto; /* Mantiene la proporción de la imagen */
+            display: block; /* Elimina espacio extra debajo de la imagen */
+            max-width: 100%; /* Asegura que la imagen no exceda el contenedor */
+        }
+
+        /* Diseño responsivo */
+        @media (max-width: 768px) {
+            .navbar a, .dropbtn {
+                font-size: 14px;
+                padding: 10px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar a, .dropbtn {
+                font-size: 12px;
+                padding: 8px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+  <a href="inicio.html" onmouseover="createSparks(event)">Inicio</a>
+  <a href="#about" onmouseover="createSparks(event)">Acerca de</a>
+  <div class="dropdown">
+    <button class="dropbtn" onmouseover="createSparks(event)">Diseños</button>
+    <div class="dropdown-content">
+      <a href="#project1" onmouseover="createSparks(event)">ANIME</a>
+      <a href="#project2" onmouseover="createSparks(event)">GAME OF THRONES</a>
+      <a href="#project3" onmouseover="createSparks(event)">MARVEL</a>
+      <a href="#project4" onmouseover="createSparks(event)">LOS SIMPSONS</a> 
+	  <a href="#project4" onmouseover="createSparks(event)">COLECCIONES</a><!-- Corregido ID duplicado -->
+    </div>
+  </div> 
+  <a href="#services" onmouseover="createSparks(event)">Servicios</a>
+  <a href="#contact" onmouseover="createSparks(event)">Contacto</a>
+</div>
+
+<!-- Espacio disponible para agregar contenido -->
+<div class="content">
+    <!-- Ejemplo de imagen responsiva -->
+    <img src="123.png" alt="Descripción de la imagen" class="responsive-image">
+	<p></p>
+	<p></p>
+	<a href="los simpsons.html">
+    <img src="imagenes finales para la pagina/homero 1.png" alt="venta de liquidación" class="responsive-image">
+</a>
+    <!-- Aquí puedes agregar más contenido y más imágenes -->
+</div>
+
+<script>
+    function createSparks(event) {
+        const button = event.currentTarget;
+        for (let i = 0; i < 15; i++) {
+            const spark = document.createElement('div');
+            spark.className = 'spark';
+            document.body.appendChild(spark);
+            const x = (Math.random() - 0.5) * 200;
+            const y = (Math.random() - 0.5) * 200;
+            spark.style.setProperty('--x', `${x}px`);
+            spark.style.setProperty('--y', `${y}px`);
+            const rect = button.getBoundingClientRect();
+            spark.style.left = `${rect.left + rect.width / 2}px`;
+            spark.style.top = `${rect.top + rect.height / 2}px`;
+            setTimeout(() => spark.remove(), 1000);
+        }
+    }
+</script>
+
+</body>
+</html>
